@@ -1,4 +1,6 @@
+import Modal from '@/components/Modal';
 import PriceInfoCard from '@/components/PriceInfoCard';
+import ProductCard from '@/components/ProductCard';
 import { getProductById, getSimilarProducts } from '@/lib/actions';
 import { formatNumber } from '@/lib/utils';
 import { Product } from '@/types';
@@ -126,30 +128,26 @@ const ProductDetails = async ({params: {id} }: Props) => {
                 title="Current Price"
                 iconSrc="/assets/icons/price-tag.svg"
                 value={`${product.currency} ${formatNumber(product.currentPrice)}`}
-                borderColor="#b6dbff"
               />
               <PriceInfoCard 
                 title="Average Price"
                 iconSrc="/assets/icons/chart.svg"
                 value={`${product.currency} ${formatNumber(product.averagePrice)}`}
-                borderColor="#b6dbff"
               />
               <PriceInfoCard 
                 title="Highest Price"
                 iconSrc="/assets/icons/arrow-up.svg"
                 value={`${product.currency} ${formatNumber(product.highestPrice)}`}
-                borderColor="#b6dbff"
               />
               <PriceInfoCard 
                 title="Lowest Price"
                 iconSrc="/assets/icons/arrow-down.svg"
                 value={`${product.currency} ${formatNumber(product.lowestPrice)}`}
-                borderColor="#b6dbff"
               />
             </div>
           </div>
 
-          Modal
+          <Modal productId={id}/>
         </div>
       </div>
 
@@ -177,17 +175,17 @@ const ProductDetails = async ({params: {id} }: Props) => {
         </button>
       </div>
 
-        {similarProducts && similarProducts?.length > 0 && (
-          <div className='py-14 flex flex-col gap-2 w-full'>
-            <p className="section-text">Similar Products</p>
+      {similarProducts && similarProducts?.length > 0 && (
+        <div className="py-14 flex flex-col gap-2 w-full">
+          <p className="section-text">Similar Products</p>
 
-            <div className="flex flex-wrap gap-10 mt-7 w-ful">
-              {similarProducts.map((product) => (
-                <PriceInfoCard key={product._id} product={product} />
-              ))}
-            </div>
+          <div className="flex flex-wrap gap-10 mt-7 w-full">
+            {similarProducts.map((product) => (
+              <ProductCard key={product._id} product={product} />
+            ))}
           </div>
-        )}
+        </div>
+      )}
     </div>
   )
 }
