@@ -1,15 +1,16 @@
 "use client"
 
-import React, { Fragment } from 'react'
+import React, { FormEvent, Fragment } from 'react'
 import { useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import Image from 'next/image'
+import { addUserEmailToProduct } from '@/lib/actions'
 
 interface Props{
     productId: string 
 }
 
-const Modal = () => {
+const Modal = ({productId}: Props) => {
     let [isOpen, setIsOpen] = useState(true)
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [email, setEmail] = useState('')

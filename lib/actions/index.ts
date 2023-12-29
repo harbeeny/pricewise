@@ -114,3 +114,4 @@ export async function addUserEmailToProduct(productId: string, userEmail: string
     console.log(error);
   }
 }
+
