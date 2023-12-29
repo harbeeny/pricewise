@@ -7,7 +7,7 @@ import { scrapeAmazonProduct } from "@/lib/scraper";
 import { generateEmailBody, sendEmail } from "@/lib/nodemailer";
 import { scrapeAndStoreProduct } from "@/lib/actions";
 
-export const maxDuration = 300; // This function can run for a maximum of 300 seconds
+export const maxDuration = 5; // This function can run for a maximum of 300 seconds
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
