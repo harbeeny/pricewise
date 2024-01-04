@@ -18,9 +18,9 @@ function HeroCarousel() {
     <div className='hero-carousel'>
         <Carousel
             showThumbs={false}
-            //autoPlay
+            autoPlay
             infiniteLoop
-            //interval={2500}
+            interval={2500}
             showArrows={false}
             showStatus={false}
         >
